@@ -1,0 +1,45 @@
+services:
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    image: nginx:latest
+    ports:
+      - "80:80"
+    depends_on:
+      - web1
+  web1:
+    container_name: web1
+    build: ./backend/web1
+    image: web1:latest
+    working_dir: /web1
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+      - "2345:2345"
+    volumes:
+      - ./backend/web1:/web1
+    command: sh -c "go mod tidy && air"  
+    tty: true
+    stdin_open: true
+
+  db:
+    container_name: mysql
+    image: mysql:latest
+    env_file: ./db/conf/.env
+    volumes:
+      - ./db/mysql_volume:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    restart: always
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin:latest
+    restart: always
+    depends_on:
+      - db
+    env_file:
+      - ./phpmyadmin/conf/.env  
+    ports:
+      - "3001:80"

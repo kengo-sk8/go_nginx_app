@@ -1,0 +1,10 @@
+# DB関連
+mysql_volume
+db/conf/.env
+phpmyadmin/conf/.env
+
+# Go関連
+backend/web1/tmp/
+
+# macOS Finderが生成するファイルを無視
+.DS_Store
