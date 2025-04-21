@@ -1,10 +1,22 @@
 # DB関連
 mysql_volume
-db/conf/.env
-phpmyadmin/conf/.env
+/db/conf/*
+/phpmyadmin/conf/*
+!/db/conf/.keep
+!/phpmyadmin/conf/.keep
 
 # Go関連
 backend/web1/tmp/
+!backend/web1/tmp/.keep
+
+# すべてのログファイルと一時ファイルを無視する
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# macOS Finderが生成するファイルを無視
+.DS_Store
 
 # macOS Finderが生成するファイルを無視
 .DS_Store
