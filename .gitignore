@@ -17,6 +17,3 @@ backend/web1/tmp/
 
 # macOS Finderが生成するファイルを無視
 .DS_Store
-
-# macOS Finderが生成するファイルを無視
-.DS_Store
